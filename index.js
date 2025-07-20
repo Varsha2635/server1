@@ -257,7 +257,7 @@ const corsOptions = {
 
   },
 
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Explicitly list allowed methods
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS', // Explicitly list allowed methods
 
   credentials: true, // Crucial for sending cookies/auth headers
 
