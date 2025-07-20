@@ -228,46 +228,7 @@ mongoose.connection.on("error", (err) => {
 // --- Middleware Configuration ---
 
 
-
-// CORS Middleware
-
-// It's good to define allowed origins from environment variables for flexibility.
-
-const allowedOrigins = ['https://resilient-bienenstitch-4f77d0.netlify.app'];
-
-
-
-const corsOptions = {
-
-  origin: function (origin, callback) {
-
-    // Allow requests with no origin (like mobile apps, curl requests, or same-origin)
-
-    // or if the origin is in our allowed list.
-
-    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-
-      callback(null, true);
-
-    } else {
-
-      callback(new Error('Not allowed by CORS'));
-
-    }
-
-  },
-
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS', // Explicitly list allowed methods
-
-  credentials: true, // Crucial for sending cookies/auth headers
-
-  optionsSuccessStatus: 204 // For preflight requests
-
-};
-
-
-
-app.use(cors(corsOptions)); // Apply CORS middleware with specific options
+app.use(cors()); // Apply CORS middleware with specific options
 
 
 
