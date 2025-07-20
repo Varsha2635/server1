@@ -1,27 +1,92 @@
+// const express = require("express");
+// const router = express.Router();
+// const cors= require("cors");
+// const { sendOTP, signup, login } = require("../controllers/Auth");
+// const { authenticateUser } = require("../middleware/auth");
+// const app=express();
+// app.use(cors());
+
+// // Routes
+// router.post("/send-otp", sendOTP);
+// router.post("/signup", signup);
+// router.post("/login", login);
+// router.post("/logout", async (req, res) => {
+//   res.clearCookie("token");
+//   return res.status(200).json({
+//     success: true,
+//     message: "User logged out successfully",
+//   });
+// });
+
+// // Optionally protected route
+// router.get("/profile", authenticateUser, (req, res) => {
+//   res.status(200).json({
+//     success: true,
+//     user: req.user,
+//     message: "Access granted to protected route",
+//   });
+// });
+
+
+
+
 const express = require("express");
+
 const router = express.Router();
+
+// const cors = require("cors"); // No longer needed here
+
 const { sendOTP, signup, login } = require("../controllers/Auth");
+
 const { authenticateUser } = require("../middleware/auth");
 
+// const app = express(); // No longer needed here
+
+// app.use(cors()); // No longer needed here
+
+
 // Routes
+
 router.post("/send-otp", sendOTP);
+
 router.post("/signup", signup);
+
 router.post("/login", login);
+
 router.post("/logout", async (req, res) => {
+
   res.clearCookie("token");
+
   return res.status(200).json({
+
     success: true,
+
     message: "User logged out successfully",
+
   });
+
 });
+
+
 
 // Optionally protected route
+
 router.get("/profile", authenticateUser, (req, res) => {
+
   res.status(200).json({
+
     success: true,
+
     user: req.user,
+
     message: "Access granted to protected route",
+
   });
+
 });
 
+
+
 module.exports = router;
+
+// module.exports = router;
