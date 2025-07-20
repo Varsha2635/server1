@@ -228,7 +228,24 @@ mongoose.connection.on("error", (err) => {
 // --- Middleware Configuration ---
 
 
-app.use(cors()); // Apply CORS middleware with specific options
+const allowedOrigins = [
+    'https://resilient-bienenstitch-4f77d0.netlify.app'
+];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new new Error('Not allowed by CORS'));
+    }
+  },
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // OPTIONS is handled implicitly by the 'cors' library
+  credentials: true, // Crucial for sending cookies/auth headers
+  optionsSuccessStatus: 204 // For preflight requests
+};
+
+app.use(cors(corsOptions));
 
 
 
