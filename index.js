@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 
+const serverless = require('serverless-http');
+
 // ✅ Import mongoose
 const mongoose = require("mongoose");
 
@@ -84,3 +86,6 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
   console.log(` Server started on http://localhost:${PORT}`);
 });
+
+
+module.exports.handler = serverless(app);
