@@ -59,7 +59,7 @@ mongoose.connection.once("open", () => {
 // Middleware
 const cors = require("cors");
 app.use(cors({
-  origin: "https://resilient-bienenstitch-4f77d0.netlify.app",
+  origin: "https://resilient-bienenstitch-4f77d0.netlify.app/login",
   credentials: true
 }));
 app.use(express.json());
