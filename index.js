@@ -233,11 +233,7 @@ mongoose.connection.on("error", (err) => {
 
 // It's good to define allowed origins from environment variables for flexibility.
 
-const allowedOrigins = process.env.CORS_ALLOWED_ORIGINS ?
-
-                       process.env.CORS_ALLOWED_ORIGINS.split(',') :
-
-                       ['https://resilient-bienenstitch-4f77d0.netlify.app']; // Default if env var is not set
+const allowedOrigins = ['https://resilient-bienenstitch-4f77d0.netlify.app'];
 
 
 
