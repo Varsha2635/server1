@@ -14,15 +14,15 @@ router.post("/logout", async (req, res) => {
   });
 });
 
-const { authenticateUser } = require("../middleware/auth");
+// const { authenticateUser } = require("../middleware/auth");
 
-// Optionally protected route
-router.get("/profile", authenticateUser, (req, res) => {
-  res.status(200).json({
-    success: true,
-    user: req.user,
-    message: "Access granted to protected route",
-  });
-});
+// // Optionally protected route
+// router.get("/profile", authenticateUser, (req, res) => {
+//   res.status(200).json({
+//     success: true,
+//     user: req.user,
+//     message: "Access granted to protected route",
+//   });
+// });
 
 module.exports = router;
