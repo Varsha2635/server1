@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 
 const { sendOTP, signup, login } = require("../controllers/Auth");
-const { authenticateUser } = require("../middleware/auth");
 
 router.post("/send-otp", sendOTP);
 router.post("/signup", signup);
@@ -14,6 +13,8 @@ router.post("/logout", async (req, res) => {
     message: "User logged out successfully",
   });
 });
+
+const { authenticateUser } = require("../middleware/auth");
 
 // Optionally protected route
 router.get("/profile", authenticateUser, (req, res) => {
