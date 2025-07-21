@@ -5,7 +5,12 @@ const { sendOTP, signup, login } = require("../controllers/Auth");
 
 console.log("reached inside routes");
 
-router.post("/send-otp", sendOTP);
+router.post("/send-otp", async (req, res) => {
+  return res.status(200).json({
+    success: true,
+    message: "User logged out successfully",
+  });
+});
 router.post("/signup", signup);
 router.post("/login", login);
 router.post("/logout", async (req, res) => {
