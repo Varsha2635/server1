@@ -61,7 +61,7 @@ mongoose.connection.once("open", () => {
 // Middleware
 const cors = require("cors");
 const allowedOrigins = [
-    'https://frontend-varsha-kundarapus-projects.vercel.app/'
+    'https://frontend-varsha-kundarapus-projects.vercel.app'
 ];
 
 const corsOptions = {
