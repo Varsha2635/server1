@@ -3,6 +3,8 @@ const jwt = require('jsonwebtoken');
 exports.authenticateUser = (req, res, next) => {
   const token = req.cookies.token;
 
+  return res.status(200).json({success: true, message: 'Hi"});
+
   if (!token) {
     return res.status(401).json({ success: false, message: 'Unauthorized - No token' });
   }
