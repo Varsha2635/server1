@@ -72,7 +72,7 @@ const corsOptions = {
             callback(new Error('Not allowed by CORS'));
         }
     },
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
     optionsSuccessStatus: 200
 };
@@ -83,24 +83,14 @@ app.use(express.json());
 const cookieParser = require("cookie-parser");
 app.use(cookieParser());
 
-app.options("/api/v1/test-otp", (req, res) => {
-    console.log("Received OPTIONS for /api/v1/test-otp");
-    res.sendStatus(200);
-});
+// Routes
+const userRoutes = require("./routes/user");
+const appointmentRoutes = require("./routes/appointment");
+const doctorRoutes = require("./routes/doctor");
 
-app.post("/api/v1/test-otp", (req, res) => {
-    console.log("Received POST for /api/v1/test-otp");
-    res.json({ message: "Test OTP received!" });
-});
-
-// // Routes
-// const userRoutes = require("./routes/user");
-// const appointmentRoutes = require("./routes/appointment");
-// const doctorRoutes = require("./routes/doctor");
-
-// app.use("/api/v1", userRoutes);
-// app.use("/api/appointments", appointmentRoutes);
-// app.use("/api/doctors", doctorRoutes);
+app.use("/api/v1", userRoutes);
+app.use("/api/appointments", appointmentRoutes);
+app.use("/api/doctors", doctorRoutes);
 
 // Health check
 app.get("/", (req, res) => {
