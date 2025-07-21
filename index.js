@@ -83,6 +83,29 @@ app.use(express.json());
 const cookieParser = require("cookie-parser");
 app.use(cookieParser());
 
+const { authenticateUser } = require("./middleware/auth");
+
+// --- Conditional Authentication Middleware ---
+// Apply auth middleware ONLY if the request is NOT OPTIONS
+// and the path is not one of your public authentication routes
+app.use((req, res, next) => {
+    if (req.method === 'OPTIONS') {
+        return res.sendStatus(200);
+    }
+    const publicPaths = [
+        '/api/v1/send-otp',
+        '/api/v1/signup',
+        '/api/v1/login',
+        '/',
+    ];
+
+    if (publicPaths.includes(req.path)) {
+        return next(); // Skip authentication for public paths
+    }
+
+    authenticateUser(req, res, next);
+});
+
 // Routes
 const userRoutes = require("./routes/user");
 const appointmentRoutes = require("./routes/appointment");
