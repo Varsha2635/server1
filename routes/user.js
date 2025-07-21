@@ -3,6 +3,8 @@ const router = express.Router();
 
 const { sendOTP, signup, login } = require("../controllers/Auth");
 
+console.log("reached inside routes");
+
 router.post("/send-otp", sendOTP);
 router.post("/signup", signup);
 router.post("/login", login);
