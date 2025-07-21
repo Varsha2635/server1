@@ -4,14 +4,6 @@ const router = express.Router();
 const { sendOTP, signup, login } = require("../controllers/Auth");
 const { authenticateUser } = require("../middleware/auth");
 
-// Routes
-router.options('/send-otp', (req, res) => {
-    res.header('Access-Control-Allow-Origin', 'https://resilient-bienenstitch-4f77d0.netlify.app');
-    res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization'); 
-    res.header('Access-Control-Allow-Credentials', 'true');
-    res.sendStatus(200);
-});
 router.post("/send-otp", sendOTP);
 router.post("/signup", signup);
 router.post("/login", login);
