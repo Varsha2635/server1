@@ -83,14 +83,24 @@ app.use(express.json());
 const cookieParser = require("cookie-parser");
 app.use(cookieParser());
 
-// Routes
-const userRoutes = require("./routes/user");
-const appointmentRoutes = require("./routes/appointment");
-const doctorRoutes = require("./routes/doctor");
+app.options("/api/v1/test-otp", (req, res) => {
+    console.log("Received OPTIONS for /api/v1/test-otp");
+    res.sendStatus(200);
+});
 
-app.use("/api/v1", userRoutes);
-app.use("/api/appointments", appointmentRoutes);
-app.use("/api/doctors", doctorRoutes);
+app.post("/api/v1/test-otp", (req, res) => {
+    console.log("Received POST for /api/v1/test-otp");
+    res.json({ message: "Test OTP received!" });
+});
+
+// // Routes
+// const userRoutes = require("./routes/user");
+// const appointmentRoutes = require("./routes/appointment");
+// const doctorRoutes = require("./routes/doctor");
+
+// app.use("/api/v1", userRoutes);
+// app.use("/api/appointments", appointmentRoutes);
+// app.use("/api/doctors", doctorRoutes);
 
 // Health check
 app.get("/", (req, res) => {
