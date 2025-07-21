@@ -60,24 +60,24 @@ mongoose.connection.once("open", () => {
 
 // Middleware
 const cors = require("cors");
-// const allowedOrigins = [
-//     'https://resilient-bienenstitch-4f77d0.netlify.app'
-// ];
+const allowedOrigins = [
+    'https://frontend-varsha-kundarapus-projects.vercel.app/'
+];
 
-// const corsOptions = {
-//     origin: function (origin, callback) {
-//         if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-//             callback(null, true);
-//         } else {
-//             callback(new Error('Not allowed by CORS'));
-//         }
-//     },
-//     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-//     credentials: true,
-//     optionsSuccessStatus: 200
-// };
+const corsOptions = {
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+    optionsSuccessStatus: 200
+};
 
-app.use(cors());
+app.use(cors(corsOptions));
 
 app.use(express.json());
 const cookieParser = require("cookie-parser");
