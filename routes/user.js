@@ -1,10 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const cors= require("cors");
+
 const { sendOTP, signup, login } = require("../controllers/Auth");
 const { authenticateUser } = require("../middleware/auth");
-const app=express();
-app.use(cors());
 
 // Routes
 router.options('/send-otp', (req, res) => {
