@@ -9,7 +9,7 @@ const mongoose = require("mongoose");
 // Load config from .env file
 require("dotenv").config();
 
-
+console.log("-Hi, it reached here-");
 // Connect to MongoDB
 const dbConnect = require("./config/database");
 dbConnect();
